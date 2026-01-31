@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookipedia</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <form action="search" method="POST">
+        <nav class="nav">
+            <h2>Home</h2>
+
+            <select name="sort" >
+                <option value="" ></option>
+                <option value="rating">Rating</option>
+                <option value="title">Title (A-Z)</option>
+                <option value="author">Author (A-Z)</option>
+            </select>
+        </nav>
+
+        <div class="search">
+            <input type="search" name="search" id="search" placeholder="Search books">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+</body>
+</html>
