@@ -9,20 +9,20 @@
 <body>
     <form action="search" method="POST">
         <nav class="nav">
-            <h2>Home</h2>
+           <h3><a href="#" class="logo">Home</a></h3> 
 
-            <select name="sort" >
-                <option value="" ></option>
+            <select name="sort" class="select">
+                <option value="" disabled selected>Sort by</option>
                 <option value="rating">Rating</option>
                 <option value="title">Title (A-Z)</option>
                 <option value="author">Author (A-Z)</option>
             </select>
-        </nav>
 
-        <div class="search">
-            <input type="search" name="search" id="search" placeholder="Search books">
-            <button type="submit">Search</button>
-        </div>
+            <div class="search">
+                <input type="search" name="search" id="search" placeholder="Search books">
+                <button type="submit">Search</button>
+            </div>
+        </nav>
     </form>
 </body>
 </html>

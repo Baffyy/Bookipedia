@@ -1,22 +1,25 @@
 <%- include('partials/header.ejs') %>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bookipedia</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <% book.forEach(book => { %>
     <section class="card">
         <img src="<%= 'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg' %>" alt="book image">
         <h2><%= book.title %></h2>
-        <h3>Author: <%= book.author  %></h3>
-        <p>Notes: <%= book.notes%></p>
+        <h3>by <%= book.author  %></h3>
+        <p>Reader notes🗒️: <%= book.notes%></p>
         <p>Date: <%= book.date_read %></p>
-        <p>Rating over 5: <%=book.ratings%></p>
+        <p>Rating out of 10🌟: <%=book.ratings%></p>
     </section>
    <% }); %>
    

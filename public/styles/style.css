@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: o;
+    box-sizing: border-box;
+}
+
+body {
+    background: #FFF8E7;
+    color: #3e2723;
+    font-family: "Roboto", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #3e2723;
+}
+
+/* for header */
+.nav {
+    background-color: #F5F5DC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    font-size: 15px;
+}
+
+.nav h3 {
+    font-weight: normal;
+}
+
+select, select:focus{
+    background-color: #F5F5DC;
+    color: #3e2723;
+    appearance: menu;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.search input {
+    border: 2px #3e2723 solid;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.search button {
+    border: 1px #3e2723 solid;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.search button:hover {
+    background-color: #3e2723;
+    color: #F5F5DC;
+}
+
+/* for homepage */
