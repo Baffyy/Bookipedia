@@ -58,3 +58,30 @@ select, select:focus{
 }
 
 /* for homepage */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+}
+
+.card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    width: 200px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(62, 39, 35, 0.15);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 6px 20px rgba(62, 39, 35, 0.25);
+  }
+
+  .card img {
+    width: 100%;
+  }
+
+  .card h2 , h3{
+    font-size: 16px;
+  }

@@ -12,16 +12,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <% book.forEach(book => { %>
-    <section class="card">
-        <img src="<%= 'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg' %>" alt="book image">
-        <h2><%= book.title %></h2>
-        <h3>by <%= book.author  %></h3>
-        <p>Reader notes🗒️: <%= book.notes%></p>
-        <p>Date: <%= book.date_read %></p>
-        <p>Rating out of 10🌟: <%=book.ratings%></p>
-    </section>
-   <% }); %>
+    <div class="card-container">
+        <% book.forEach(book => { %>
+            <section class="card">
+                <img src="<%= 'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg' %>" alt="book image">
+                <h2><%= book.title %></h2>
+                <h3>by <%= book.author  %></h3>
+                <p>Reader notes🗒️: <%= book.notes%></p>
+                <p>Date: <%= book.date_read %></p>
+                <p>Rating out of 10🌟: <%=book.ratings%></p>
+            </section>     
+           <% }); %>
+    </div>
+   
    
 </body>
 </html>
