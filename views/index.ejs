@@ -12,18 +12,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="card-container">
-        <% book.forEach(book => { %>
-            <section class="card">
-                <img src="<%= 'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg' %>" alt="book image">
-                <h2><%= book.title %></h2>
-                <h3>by <%= book.author  %></h3>
-                <p>Reader notes🗒️: <%= book.notes%></p>
-                <p>Date: <%= book.date_read %></p>
-                <p>Rating out of 10🌟: <%=book.ratings%></p>
-            </section>     
-           <% }); %>
-    </div>
+
+    <header id="main-header">
+        <h1 class="big-header">📚 Welcome to Bookipedia</h1>
+        <p class="header-note"> A personal library of the books I have read, the notes I have taken, and the ideas that stuck with me.
+            Browse through my collection, explore reviews, and see what I have been learning along the way.
+            Each entry includes ratings, reading dates, and reflections(notes), so nothing valuable gets forgotten. <br>
+
+            <br>
+        
+            All opinions and thoughts shared here are entirely my own. They reflect my personal experiences, interpretations, and moods at the time of reading. You are absolutely free to disagree, debate, or see things differently — that is part of what makes reading interesting 😄. No book is judged as “good” or “bad” universally here. This is simply my honest record of what each one meant to me. 
+        </p>
+
+    </header>
+
+    <hr>
+
+
+    <form action="/view" method="POST">
+        <div class="card-container">
+            <% book.forEach(book => { %>
+                <section class="card">
+                    <img src="<%= 'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg' %>" alt="book image">
+                    <h2><%= book.title %></h2>
+                    <h3>by <%= book.author  %></h3>
+                    <p>
+                        <% for (let i = 0; i < book.ratings; i++) { %>
+                          <%= "⭐️" %>
+                        <% } %>
+                      </p>                      
+                    <button type="submit">Read My Notes</button>
+                </section>     
+               <% }); %>
+        </div>
+    </form>
+   
+    
+
    
    
 </body>

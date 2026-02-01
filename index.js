@@ -39,6 +39,14 @@ app.get("/", async (req,res) => {
         console.error(err);
         res.status(500).send("Database error");
     }
+});
+
+app.post ("/search", async (req, res) => {
+    const search = req.body.search;
+
+    const result = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()));
+
+    res.render("index.ejs", {book:result})
 })
 
 
