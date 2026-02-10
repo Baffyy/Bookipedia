@@ -121,5 +121,12 @@ select, select:focus{
     font-size: 14px;
   }
 
+  .button {
+    border: 1px #3e2723 solid;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
 
 

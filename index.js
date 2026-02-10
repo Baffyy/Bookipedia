@@ -41,6 +41,16 @@ app.get("/", async (req,res) => {
     }
 });
 
+app.get("/view/:id", (req,res) => {
+    const bookId = parseInt(req.params.id);
+
+    console.log(bookId);
+
+    const result = books.find((book) => book.id == bookId)
+
+    res.render("view.ejs", {book: result})
+})
+
 app.post ("/search", async (req, res) => {
     const search = req.body.search;
 
@@ -48,7 +58,6 @@ app.post ("/search", async (req, res) => {
 
     res.render("index.ejs", {book:result})
 })
-
 
 
 app.listen(port, () => {

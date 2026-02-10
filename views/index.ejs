@@ -29,27 +29,20 @@
     <hr>
 
 
-    <form action="/view" method="POST">
-        <div class="card-container">
-            <% book.forEach(book => { %>
-                <section class="card">
-                    <img src="<%= 'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg' %>" alt="book image">
-                    <h2><%= book.title %></h2>
-                    <h3>by <%= book.author  %></h3>
-                    <p>
-                        <% for (let i = 0; i < book.ratings; i++) { %>
-                          <%= "⭐️" %>
-                        <% } %>
-                      </p>                      
-                    <button type="submit">Read My Notes</button>
-                </section>     
-               <% }); %>
-        </div>
-    </form>
-   
-    
-
-   
-   
+    <div class="card-container">
+        <% book.forEach(book => { %>
+            <section class="card">
+                <img src="<%= 'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg' %>" alt="book image">
+                <h2><%= book.title %></h2>
+                <h3>by <%= book.author  %></h3>
+                <p>
+                    <% for (let i = 0; i < book.ratings; i++) { %>
+                      <%= "⭐️" %>
+                    <% } %>
+                  </p>                      
+                <a href="<%='/view/'+ book.id %>" class="button">Read My Notes</a>
+            </section>     
+           <% }); %>
+    </div>
 </body>
 </html>
