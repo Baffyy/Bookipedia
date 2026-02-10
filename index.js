@@ -41,14 +41,23 @@ app.get("/", async (req,res) => {
     }
 });
 
-app.get("/view/:id", (req,res) => {
+app.get("/view/:id", async (req,res) => {
     const bookId = parseInt(req.params.id);
 
-    console.log(bookId);
+    try {
+        const databaseId = await db.query("SELECT * FROM books WHERE id = $1", [bookId]);
 
-    const result = books.find((book) => book.id == bookId)
+        if (databaseId.rows.length === 0) {
+            return res.status(404).send("Book Not Found")
+        }
 
-    res.render("view.ejs", {book: result})
+       const book = databaseId.rows[0]
+    
+        res.render("view.ejs", {book: book});
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Internal server error");
+    }   
 })
 
 app.post ("/search", async (req, res) => {

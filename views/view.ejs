@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
-    <img src="<%= 'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-L.jpg' %>" alt="book image">
-    <h1><%=book.title%></h1>
-    <h2><%=book.author%></h2>
-    <p>
-         <% for (let i = 0; i < book.ratings; i++) { %>
-            <%= "⭐️" %>
-        <% } %>
-    </p>     
-    <p><%=book.notes%></p>
+    <div class="card-pro">
+        <img src="<%= 'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-L.jpg' %>" alt="book image">
+  
+        <h1><%=book.title%></h1>
+        <h2><%=book.author%></h2>
+        <p class="ratings">
+            <% for (let i = 0; i < book.ratings; i++) { %>
+                <%= "⭐️" %>
+            <% } %>
+        </p>     
+        <p class="notes">Notes <hr> <%=book.notes%></p>
+    </div>
+    
+    
 </body>
 </html>
