@@ -3,25 +3,25 @@ import express from "express";
 import pg from "pg"
 import bodyParser from "body-parser";
 import axios from "axios";
+import env from "dotenv";
 
 // created our server 
 const app = express();
 const port = 3000;
+env.config();
 
 // created middlewares
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-
-
 // Linked our database to express 
 const db = new pg.Client({
-    user: "postgres",
-    host: "127.0.0.1",
-    database: "bookipedia",
-    password: "1234567",
-    port: 5432
+    user: process.env.PG_USER,
+    host: process.env.PG_HOST,
+    database: process.env.PG_DATABASE,
+    password: process.env.PG_PASSWORD,
+    port: process.env.PG_PORT
 });
 
 db.connect();
@@ -46,6 +46,8 @@ app.get("/view/:id", async (req,res) => {
 
     try {
         const databaseId = await db.query("SELECT * FROM books WHERE id = $1", [bookId]);
+        
+        console.log(databaseId)
 
         if (databaseId.rows.length === 0) {
             return res.status(404).send("Book Not Found")
@@ -63,9 +65,23 @@ app.get("/view/:id", async (req,res) => {
 app.post ("/search", async (req, res) => {
     const search = req.body.search;
 
-    const result = books.filter((book) => book.title.toLowerCase().includes(search.toLowerCase()));
+    try {
+        const titleSearch = await db.query("SELECT * FROM books WHERE title ILIKE $1", [`%${search}%`]);
 
-    res.render("index.ejs", {book:result})
+        if (titleSearch.rows.length < 0) {
+            return res.status(404).send("Book Not Found")
+        }
+
+        const bookSearch = titleSearch.rows;
+
+        res.render("index.ejs", {book:bookSearch});
+
+        console.log(bookSearch);
+
+
+    } catch {
+        console.error(err)
+    }
 })
 
 
